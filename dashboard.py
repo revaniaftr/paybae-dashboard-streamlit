@@ -9,32 +9,42 @@ st.set_page_config(page_title="PAYBAE AI Analytics Dashboard", page_icon="💳",
 
 # Custom CSS untuk UI/UX Dashboard yang Clean
 st.markdown("""
-    <style>
-    div[data-testid="metric-container"] {
-        background-color: #fcfcfc;
-        border: 1px solid #e6e8ea;
-        padding: 20px;
-        border-radius: 12px;
-        box-shadow: 3px 3px 8px rgba(0,0,0,0.03);
-    }
-    .business-card {
-        background-color: #ffffff;
-        padding: 20px;
-        border-radius: 10px;
-        border: 1px solid #e3e8ed;
-        border-left: 6px solid #228be6;
-        margin-bottom: 20px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.02);
-    }
-    .ai-tag {
-        background-color: #e7f5ff;
-        color: #1c7ed6;
-        padding: 4px 8px;
-        border-radius: 4px;
-        font-size: 12px;
-        font-weight: bold;
-    }
-    </style>
+<style>
+
+div[data-testid="metric-container"] {
+    background-color: var(--secondary-background-color);
+    border: 1px solid rgba(128,128,128,0.2);
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.business-card {
+    background-color: var(--secondary-background-color);
+    color: var(--text-color);
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid rgba(128,128,128,0.2);
+    border-left: 6px solid #228be6;
+    margin-bottom: 20px;
+}
+
+.business-card h4,
+.business-card p,
+.business-card b,
+.business-card code {
+    color: var(--text-color);
+}
+
+.ai-tag {
+    background-color: #e7f5ff;
+    color: #1c7ed6;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+</style>
 """, unsafe_allow_html=True)
 
 # 2. DATA PIPELINE (LOAD & WRANGLING)
@@ -190,7 +200,6 @@ with col_ai1:
         <h4>Q2: Bagaimana mendeteksi adanya transaksi impulsif yang tidak wajar (Outlier)?</h4>
         <p><b>Masalah Bisnis:</b> Deteksi dini pengeluaran boros yang tidak disadari untuk sistem peringatan mandiri <i>(Personal Smart Alert)</i> agar pengguna segera menyadari kebiasaan impulsifnya.</p>
         <p><b>Pondasi Fitur (Notebook):</b> Memanfaatkan fitur variabel <code>std_seminggu</code> dan <code>std_sebulan</code>. Jika pengeluaran saat ini melampaui batas deviasi standar historisnya, AI akan memberi label anomali.</p>
-        <p><b>Algoritma Rencana:</b> Isolation Forest atau Z-Score Thresholding.</p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -201,7 +210,7 @@ with col_ai2:
         <h4>Q3: Apakah pola pengeluaran sangat dipengaruhi oleh hari gajian atau akhir pekan?</h4>
         <p><b>Masalah Bisnis:</b> Mengetahui pemicu psikologis (trigger) terbesar pengguna dalam menghabiskan uang secara impulsif.</p>
         <p><b>Pondasi Fitur (Notebook):</b> Mengeksploitasi kolom biner <code>is_payday</code> (tanggal 1-5) dan <code>weekend_encoded</code> untuk melihat apakah ada lonjakan belanja signifikan pada periode tersebut.</p>
-        <p><b>Output AI:</b> Mengirimkan notifikasi pengingat otomatis ("Sabar, baru gajian, jangan langsung boros ya!").</p>
+        <p><b>Output AI:</b> Mengirimkan notifikasi pengingat otomatis.</p>
     </div>
     <div class="business-card">
         <span class="ai-tag">SISTEM REKOMENDASI OPTIMASI</span>
